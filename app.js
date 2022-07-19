@@ -8,7 +8,7 @@ app.use(express.json());
 const dotenv = require('dotenv');
 dotenv.config({path:'./env/.env'});
 
-app.use('/reosurces', express.static('public'));
+app.use('/resources', express.static('public'));
 app.use('resources', express.static(__dirname + '/public'));
 
 //Motor de plantillas ejs
@@ -27,7 +27,11 @@ app.use(session({
 const connection = require('./database/db');
 
 app.get('/', (req, res) => {
-    res.send('Hola mundo');
+    res.render('index');
+})
+
+app.get('/register', (req, res) => {
+    res.render('register');
 })
 
 app.listen(3000, (req, res) => {

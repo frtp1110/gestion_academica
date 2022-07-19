@@ -1,0 +1,162 @@
+body{
+    background-color: rgb(43, 108, 230);
+    font-family: Arial, Helvetica, sans-serif;
+    margin: auto;
+    text-align: center;
+}
+
+.login-form, .contenedor{
+    width: 300px;
+    margin: 0 auto;
+}
+
+.login-form h1{
+    text-align: center;
+    color: midnightblue;
+    font-size: 28px;
+    padding: 70px 0 10px 0;
+}
+
+.login-form input[type="password"],
+.login-form input[type="text"]{
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ced4da;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.btn-login{
+    width: 100%;
+    padding: 15px;
+    background-color: #031468;
+    border: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: large;
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+.btn-login:hover, .btn-login:active{
+    color: #fff;
+    background-color: #0b29bd;
+    border-color: #0b29bd;
+}
+
+.btn-login:focus{
+    box-shadow: 0 0 0 3px rgba(121, 82, 179, 0.25);
+}
+
+.btn-register{
+    width: 100%;
+    padding: 15px;
+    background-color: #0b9071;
+    border: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: large;
+    color: #ffffff;
+    border-radius: 5px;
+    margin-top: 20px;
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+}
+
+.btn-register:hover, .btn-register:active{
+    color: #fff;
+    background-color: #09c778;
+    border-color: #09c778;
+}
+
+.btn-register:focus{
+    box-shadow: 0 0 0 3px rgba(121, 82, 179, 0.25);
+}
+
+/*Formulario de registro*/
+
+.register-form h1{
+    text-align: center;
+    color: midnightblue;
+    font-size: 28px;
+    padding: 70px 0 10px 0;
+}
+
+label{
+    text-align: left;
+}
+
+.register-form input[type="password"],
+.register-form input[type="text"]{
+    width: 50%;
+    padding: 15px;
+    border: 1px solid #ced4da;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+label{
+    display: inline;
+}
+
+.btn-cancel{
+    width: 50%;
+    padding: 15px;
+    background-color: #031468;
+    border: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: large;
+    color: #ffffff;
+    border-radius: 5px;
+    margin-top: 20px;
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+}
+
+.btn-cancel:hover, .btn-cancel:active{
+    color: #fff;
+    background-color: #0b29bd;
+    border-color: #0b29bd;
+}
+
+.btn-cancel:focus{
+    box-shadow: 0 0 0 3px rgba(121, 82, 179, 0.25);
+}
+
+.btn-save{
+    width: 50%;
+    padding: 15px;
+    background-color: #0b9071;
+    border: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: large;
+    color: #ffffff;
+    border-radius: 5px;
+    margin-top: 20px;
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+}
+
+.btn-save:hover, .btn-save:active{
+    color: #fff;
+    background-color: #09c778;
+    border-color: #09c778;
+}
+
+.btn-save:focus{
+    box-shadow: 0 0 0 3px rgba(121, 82, 179, 0.25);
+}
