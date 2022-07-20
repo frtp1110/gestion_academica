@@ -1,21 +1,21 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio de Sesión</title>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="resources/css/style.css">
-</head>
-<body>
-    <div class="login-form">
-        <h2>Inicio de Sesión</h2>
-        <form action="auth" method="POST">
-            <input type="text" name="user" id="user" placeholder="Usuario" required>
-            <input type="password" name="password" id="password" placeholder="Contraseña" required>
-            <input type="submit" class="btn-login" value="Iniciar Sesión">
-        </form>
-        <a href="register" class="btn-register">Registro</a>
-    </div>
-</body>
+    <title>Sistema Gestión Académica</title>
+  </head>
+  <body class="text-center">         
+          <div class="contenedor">
+            <% if (login) { %>                
+                <h1>Usuario conectado: <strong><%= name %></strong></h1>                        
+                <a href="logout" class="a-logout">Cerrar sesión</a>
+            <%} else { %>
+                <h1><strong><%= name %></strong></h1>   
+                <a href="login" class="a-login">Ir a inicio de sesión </a>
+            <% } %>
+          </div>
+  </body>
 </html>
