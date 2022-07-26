@@ -34,21 +34,23 @@ app.get('/register', (req, res) => {
     res.render('register');
 })
 
-app.post('/register', async (req, res)=>{
-	const user = req.body.user;
+app.post('/register', async (req, res) => {
+	const rol = req.body.rol;
 	const name = req.body.name;
-    const rol = req.body.rol;
-	const pass = req.body.pass;
-	let passwordHash = await bcrypt.hash(pass, 8);
-    connection.query('INSERT INTO users SET ?',{user:user, name:name, rol:rol, pass:passwordHash}, async (error, results)=>{
+	const user = req.body.user;
+	const password = req.body.password;
+	//const image = req.body.image;
+	let passwordHash = await bcryptjs.hash(password, 8);
+
+    connection.query('INSERT INTO user SET ?',{rol:rol, name: name, user:user, password:passwordHash}, async (error, results) => {
         if(error){
             console.log(error);
         }else{            
 			res.render('register', {
 				alert: true,
-				alertTitle: "Registration",
-				alertMessage: "¡Successful Registration!",
-				alertIcon:'success',
+				alertTitle: "Registro",
+				alertMessage: "¡Registro exitoso!",
+				alertIcon: 'success',
 				showConfirmButton: false,
 				timer: 1500,
 				ruta: ''
@@ -58,32 +60,32 @@ app.post('/register', async (req, res)=>{
 	});
 })
 
-app.post('/auth', async (req, res)=> {
+app.post('/auth', async (req, res) => {
 	const user = req.body.user;
-	const pass = req.body.pass;    
-    let passwordHash = await bcrypt.hash(pass, 8);
-	if (user && pass) {
-		connection.query('SELECT * FROM users WHERE user = ?', [user], async (error, results, fields)=> {
-			if( results.length == 0 || !(await bcrypt.compare(pass, results[0].pass)) ) {    
+	const password = req.body.password;    
+    let passwordHash = await bcryptjs.hash(password, 8);
+
+	if (user && password) {
+		connection.query('SELECT * FROM user WHERE user = ?', [user], async (error, results, fields)=> {
+			if( results.length == 0 || !(await bcryptjs.compare(password, results[0].password)) ) {    
 				res.render('login', {
                         alert: true,
                         alertTitle: "Error",
-                        alertMessage: "USUARIO y/o PASSWORD incorrectas",
-                        alertIcon:'error',
+                        alertMessage: "Usuario y/o contraseña incorrectas",
+                        alertIcon: 'error',
                         showConfirmButton: true,
                         timer: false,
                         ruta: 'login'    
                     });
                 //res.send('Incorrect Username and/or Password!');				
-			} else {         
-				//creamos una var de session y le asignamos true si INICIO SESSION       
+			} else {               
 				req.session.loggedin = true;                
 				req.session.name = results[0].name;
 				res.render('login', {
 					alert: true,
 					alertTitle: "Conexión exitosa",
-					alertMessage: "¡LOGIN CORRECTO!",
-					alertIcon:'success',
+					alertMessage: "¡Usuario correcto!",
+					alertIcon: 'success',
 					showConfirmButton: false,
 					timer: 1500,
 					ruta: ''
@@ -92,12 +94,12 @@ app.post('/auth', async (req, res)=> {
 			res.end();
 		});
 	} else {	
-		res.send('Please enter user and Password!');
+		res.send('Por favor ingrese un usuario y contraseña!');
 		res.end();
 	}
 });
 
-app.get('/', (req, res)=> {
+app.get('/', (req, res) => {
 	if (req.session.loggedin) {
 		res.render('index',{
 			login: true,
@@ -105,8 +107,8 @@ app.get('/', (req, res)=> {
 		});		
 	} else {
 		res.render('index',{
-			login:false,
-			name:'Debe iniciar sesión',			
+			login: false,
+			name: 'Debe iniciar sesión',			
 		});				
 	}
 	res.end();

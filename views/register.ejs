@@ -24,7 +24,7 @@
             <input type="text" name="user" required tabindex="3">
             <label for="password">Contraseña</label>
             <input type="password" name="password" required>
-            <input type="file" name="image" aria-describedby="inputGroupFileAddon">
+            <!--<input type="file" name="image" aria-describedby="inputGroupFileAddon">-->
 
             <div style="display: inline;">
                 <a href="/" class="btn-cancel">Cancelar</a><input type="submit" class="btn-save" value="Guardar">
@@ -39,8 +39,8 @@
                     title:'<%= alertTitle %>',
                     text:'<%= alertMessage %>',
                     icon:'<%= alertIcon %>',
-                    showConfirmButton: <%= showConfirmButton %>
-                    timer: <%= timer %>
+                    showConfirmButton: '<%= showConfirmButton %>',
+                    timer: '<%= timer %>',
                 }).then(()=>{
                     window.location='/ <%= ruta %>'
                 })
